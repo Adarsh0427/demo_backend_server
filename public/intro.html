@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction to Docker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --docker-blue: #2496ED;
+            --dark-navy: #0d1b2a;
+            --light-gray: #f8f9fa;
+            --text-color: #343a40;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            --border-radius: 12px;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-gray);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .header img {
+            max-width: 150px;
+            margin-bottom: 1rem;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--dark-navy);
+            margin: 0;
+            letter-spacing: 1.5px;
+        }
+        
+        .header .subtitle {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #6c757d;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-left: 5px solid var(--docker-blue);
+        }
+
+        .card h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--dark-navy);
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .card p, .card ul li {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #495057;
+        }
+        
+        .card ul {
+            padding-left: 20px;
+            margin-top: 1rem;
+        }
+
+        .card ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .profile-section img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #e9ecef;
+        }
+        
+        .quote {
+            background-color: #e7f5ff;
+            border-left: 4px solid var(--docker-blue);
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            font-style: italic;
+            color: #034f84;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .quote strong {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-style: normal;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #dee2e6;
+            color: #6c757d;
+        }
+        
+        footer p {
+            margin: 0.25rem 0;
+        }
+        
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem;
+            }
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+            .profile-section {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <header class="header">
+            <img src="https://cdn.worldvectorlogo.com/logos/docker-4.svg" alt="Docker Logo">
+            [cite_start]<h1>DOCKER [cite: 1]</h1>
+            [cite_start]<p class="subtitle">Presentation [cite: 2]</p>
+        </header>
+
+        <main>
+            <section class="card">
+                [cite_start]<h2>What is Docker? [cite: 12]</h2>
+                <p>
+                    [cite_start]Docker is a containerization platform that allows developers to package applications and their dependencies into lightweight, portable containers[cite: 13].
+                </p>
+                <p>
+                    [cite_start]These containers can run consistently across different environments, from a developer's laptop to testing servers to production systems, without worrying about compatibility issues[cite: 14].
+                </p>
+                <div class="quote">
+                    [cite_start]<strong>In Simple Terms: [cite: 15]</strong>
+                    [cite_start]Think of Docker as a "shipping container for software" - it wraps up your code, libraries, configurations, and dependencies into one isolated unit that can run anywhere[cite: 16, 17].
+                </div>
+            </section>
+            
+            <section class="card">
+                [cite_start]<h2>History of Docker [cite: 7]</h2>
+                <div class="profile-section">
+                    <img src="https://www.ycombinator.com/assets/people/solomon-hykes-533d33267ab332c66846132a417534b868a6ad11e5a31a55b20a3297a7a58a0a.jpeg" alt="Solomon Hykes, co-founder of Docker">
+                    <div>
+                        <ul>
+                            [cite_start]<li>Docker is a YC-backed company that started around 2014[cite: 8].</li>
+                            [cite_start]<li>They envisioned a world where containers would become mainstream for deploying applications, which is mostly true today[cite: 9].</li>
+                            [cite_start]<li>Most projects on Github will or should have Dockerfiles for creating Docker containers[cite: 10]. [cite_start](Reference: Y Combinator Blog [cite: 11])</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            [cite_start]<p><strong>Presented by Dr. Kamalakanta Sethi [cite: 3, 4]</strong></p>
+            [cite_start]<p>Indian Institute of Information and Technology, Sri City [cite: 5]</p>
+            [cite_start]<p>20th October 2025 [cite: 6]</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
