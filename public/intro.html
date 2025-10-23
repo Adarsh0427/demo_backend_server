@@ -27,6 +27,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            box-sizing: border-box; /* Ensures padding doesn't cause overflow */
         }
 
         .container {
@@ -49,13 +50,14 @@
             font-weight: 700;
             color: var(--dark-navy);
             margin: 0;
-            letter-spacing: 1.5px;
+            /* Removed aggressive letter-spacing */
         }
         
         .header .subtitle {
             font-size: 1.25rem;
             font-weight: 300;
             color: #6c757d;
+            margin-top: 0.5rem; /* Added some space */
         }
 
         .card {
@@ -86,6 +88,7 @@
         .card ul {
             padding-left: 20px;
             margin-top: 1rem;
+            margin-bottom: 0; /* Cleaned up spacing */
         }
 
         .card ul li {
@@ -104,6 +107,27 @@
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #e9ecef;
+            flex-shrink: 0; /* Prevents image from shrinking */
+        }
+        
+        /* Wrapper for the text next to the profile image */
+        .profile-info {
+            flex: 1;
+        }
+
+        /* Added styles for the profile context */
+        .profile-info strong {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--dark-navy);
+            display: block;
+        }
+        
+        .profile-info p {
+            font-size: 0.95rem;
+            margin-top: 0.25rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
         }
         
         .quote {
@@ -144,6 +168,7 @@
             .card {
                 padding: 1.5rem;
             }
+            /* Stack profile section on mobile */
             .profile-section {
                 flex-direction: column;
                 align-items: center;
@@ -158,35 +183,48 @@
     <div class="container">
 
         <header class="header">
-            <img src="https://cdn.worldvectorlogo.com/logos/docker-4.svg" alt="Docker Logo">
-            [cite_start]<h1>DOCKER [cite: 1]</h1>
-            [cite_start]<p class="subtitle">Presentation [cite: 2]</p>
+            <!-- Added a fallback image placeholder -->
+            <img src="https://cdn.worldvectorlogo.com/logos/docker-4.svg" 
+                 alt="Docker Logo"
+                 onerror="this.src='https://placehold.co/150x150/2496ED/FFFFFF?text=Docker'; this.onerror=null;">
+            
+            <!-- Improved Title -->
+            <h1>Introduction to Docker</h1>
+            <!-- Improved Subtitle -->
+            <p class="subtitle">A brief overview of containerization</p>
         </header>
 
         <main>
             <section class="card">
-                [cite_start]<h2>What is Docker? [cite: 12]</h2>
+                <h2>What is Docker?</h2>
                 <p>
-                    [cite_start]Docker is a containerization platform that allows developers to package applications and their dependencies into lightweight, portable containers[cite: 13].
+                    Docker is a containerization platform that allows developers to package applications and their dependencies into lightweight, portable containers.
                 </p>
                 <p>
-                    [cite_start]These containers can run consistently across different environments, from a developer's laptop to testing servers to production systems, without worrying about compatibility issues[cite: 14].
+                    These containers can run consistently across different environments, from a developer's laptop to testing servers to production systems, without worrying about compatibility issues.
                 </p>
                 <div class="quote">
-                    [cite_start]<strong>In Simple Terms: [cite: 15]</strong>
-                    [cite_start]Think of Docker as a "shipping container for software" - it wraps up your code, libraries, configurations, and dependencies into one isolated unit that can run anywhere[cite: 16, 17].
+                    <strong>In Simple Terms:</strong>
+                    Think of Docker as a "shipping container for software" - it wraps up your code, libraries, configurations, and dependencies into one isolated unit that can run anywhere.
                 </div>
             </section>
             
             <section class="card">
-                [cite_start]<h2>History of Docker [cite: 7]</h2>
+                <h2>History of Docker</h2>
+                <!-- Updated structure for better content flow -->
                 <div class="profile-section">
-                    <img src="https://www.ycombinator.com/assets/people/solomon-hykes-533d33267ab332c66846132a417534b868a6ad11e5a31a55b20a3297a7a58a0a.jpeg" alt="Solomon Hykes, co-founder of Docker">
-                    <div>
+                    <!-- Added a fallback image placeholder -->
+                    <img src="https://chartwellspeakers.b-cdn.net/wp-content/uploads/2018/10/Solomon-Hykes.jpg" 
+                         alt="Solomon Hykes, co-founder of Docker"
+                         onerror="this.src='https://placehold.co/120x120/0d1b2a/FFFFFF?text=S.H.'; this.onerror=null;">
+                    
+                    <div class="profile-info">
+                        <strong>Created by Solomon Hykes</strong>
+                        <p>Docker was first presented by Solomon Hykes (pictured) at PyCon in 2013 while he was at dotCloud, a YC-backed company.</p>
                         <ul>
-                            [cite_start]<li>Docker is a YC-backed company that started around 2014[cite: 8].</li>
-                            [cite_start]<li>They envisioned a world where containers would become mainstream for deploying applications, which is mostly true today[cite: 9].</li>
-                            [cite_start]<li>Most projects on Github will or should have Dockerfiles for creating Docker containers[cite: 10]. [cite_start](Reference: Y Combinator Blog [cite: 11])</li>
+                            <li>It popularized OS-level virtualization, allowing developers to "build, ship, and run any app, anywhere."</li>
+                            <li>It became wildly popular, and dotCloud eventually rebranded to Docker Inc. to focus on the new technology.</li>
+                            <li>Today, it is a fundamental tool in modern software development and DevOps workflows.</li>
                         </ul>
                     </div>
                 </div>
@@ -194,9 +232,9 @@
         </main>
 
         <footer>
-            [cite_start]<p><strong>Presented by Dr. Kamalakanta Sethi [cite: 3, 4]</strong></p>
-            [cite_start]<p>Indian Institute of Information and Technology, Sri City [cite: 5]</p>
-            [cite_start]<p>20th October 2025 [cite: 6]</p>
+            <p><strong>Presented by Dr. Kamalakanta Sethi</strong></p>
+            <p>Indian Institute of Information and Technology, Sri City</p>
+            <p>24th October 2025</p>
         </footer>
 
     </div>
