@@ -3,6 +3,8 @@
 
 This is a small learning project that demonstrates a simple Node.js + Express backend using Prisma, and shows how to build and run it inside a Docker container. It's intentionally minimal and meant for learning how Dockerfiles and containerization work.
 
+<!-- markdownlint-disable MD033 -->
+
 ## What this project contains
 
 - A simple Express server in `src/index.ts` that serves static files from `public/`, provides a health endpoint (`GET /`) and a signup endpoint (`POST /`) that creates a `user` via Prisma.
@@ -10,7 +12,10 @@ This is a small learning project that demonstrates a simple Node.js + Express ba
 
 ## Build and run with Docker
 
-From the project root (where the `Dockerfile` is), run the following to build the Docker image and start a container:
+From the project root (where the `Dockerfile` is), you can build the Docker image and start a container. Expand the section below for copyable commands.
+
+<details>
+<summary>Build & run commands (click to expand)</summary>
 
 ```bash
 # Build the Docker image (tag it as demo-backend-server)
@@ -22,15 +27,20 @@ docker run --rm -p 3000:3000 demo-backend-server
 
 After the container starts the server will be reachable at <http://localhost:3000>
 
-Notes:
+**Notes:**
 
 - Use `-d` with `docker run` to run in detached mode: `docker run -d --rm -p 3000:3000 demo-backend-server`.
 - If you make changes to source files, rebuild the image with `docker build`.
 
+</details>
+
+
 ## Dockerfile (lines explained)
 
+Below are the lines from the `Dockerfile` with short explanations. This `Dockerfile` is simple and intended for learning. Click to expand.
 
-Below are the lines from the `Dockerfile` with short explanations. This `Dockerfile` is simple and intended for learning.
+<details>
+<summary>Dockerfile lines and explanations</summary>
 
 FROM node: 16-alpine
 
@@ -60,6 +70,8 @@ CMD ["node", "dist/index.js"]
 
 - The default command run when the container starts. It executes the built Node app. If your build outputs to a different path, update this line accordingly.
 
+</details>
+
 ## Development notes and assumptions
 
 - This project assumes a `build` script in `package.json` that produces `dist/index.js` from the TypeScript source in `src/`. If you haven't set that up yet, add a build step such as `tsc` or use a bundler.
@@ -68,11 +80,20 @@ CMD ["node", "dist/index.js"]
 
 ## Example: run with environment variables
 
+<details>
+<summary>Example run command (click to expand)</summary>
+
 ```bash
 docker run --rm -p 3000:3000 -e DATABASE_URL="postgresql://user:pass@host:5432/db" demo-backend-server
 ```
 
+</details>
+
+
 ## Next steps (learning suggestions)
+
+<details>
+<summary>Suggestions (click to expand)</summary>
 
 - Add a `.dockerignore` file to exclude files from the image build (e.g., `node_modules`, `.git`, `tmp`).
 - Convert the `Dockerfile` to a multi-stage build to keep the final image minimal.
@@ -81,3 +102,5 @@ docker run --rm -p 3000:3000 -e DATABASE_URL="postgresql://user:pass@host:5432/d
 ---
 
 If you want, I can also add a `.dockerignore`, a multi-stage `Dockerfile` example, or a `docker-compose.yml` to run the app with a local database. Which would you like next?
+
+</details>
